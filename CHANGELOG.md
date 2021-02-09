@@ -1,3 +1,15 @@
+# 1.2.0 (2021-02-09)
+
+
+### Bug Fixes
+
+* fix conflicts ([fbb81f7](https://github.com/phatnguyenuit/game-bau-cua/commit/fbb81f73a37c285f98cf828a737df502340bae15))
+
+
+### Features
+
+* aadd initial project ([b922109](https://github.com/phatnguyenuit/game-bau-cua/commit/b9221097531888b589be8e0bc782d66a5a79e8a2))
+
 # 1.0.0 (2021-02-09)
 
 
