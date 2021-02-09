@@ -1,3 +1,10 @@
+# 1.0.0 (2021-02-09)
+
+
+### Features
+
+* aadd initial project ([b922109](https://github.com/phatnguyenuit/game-bau-cua/commit/b9221097531888b589be8e0bc782d66a5a79e8a2))
+
 # 1.1.0 (2021-02-09)
 
 
