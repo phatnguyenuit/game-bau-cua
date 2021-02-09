@@ -1,3 +1,5 @@
+## [1.2.1](https://github.com/phatnguyenuit/game-bau-cua/compare/1.2.0...1.2.1) (2021-02-09)
+
 # 1.2.0 (2021-02-09)
 
 
