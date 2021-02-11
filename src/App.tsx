@@ -6,12 +6,14 @@ function App() {
 
   return (
     <div data-testid="App" className="App">
+      <div className="side-section left-side">Happy new year 2021</div>
+      <div className="side-section right-side">Happy new year 2021</div>
       <div className="game-plate">
         {names.map((name, index) => (
           <div key={`${name}-${index}`} className="plate-item">
             <div className="content">
               <img
-                width={54}
+                width={64}
                 height="auto"
                 src={images[name]}
                 alt={`rolled-${name}`}
@@ -21,11 +23,16 @@ function App() {
         ))}
         <button
           type="button"
-          className={`roll-button`}
+          className={`play-button`}
           disabled={rolling}
           onClick={handleRoll}
         >
-          Roll
+          <img
+            width={64}
+            height="auto"
+            src="/images/dice.svg"
+            alt="play-icon"
+          />
         </button>
       </div>
       <div className="game-grid">

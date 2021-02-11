@@ -52,16 +52,14 @@ export const useRollDices = () => {
   );
 
   useEffect(() => {
-    // TODO fix rolling status
     return () => {
-      if (intervalId && timeoutId) {
+      if (intervalId && timeoutId && rolling) {
         const cleanInterval = makeCleanInterval(intervalId);
-        console.log('cleanup');
         cleanInterval();
         window.clearTimeout(timeoutId);
       }
     };
-  }, [makeCleanInterval, intervalId, timeoutId]);
+  }, [makeCleanInterval, intervalId, timeoutId, rolling]);
 
   return {
     names,

@@ -1,31 +1,62 @@
 .App {
+  position: relative;
   font-size: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.side-section {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+  color: #ff9800;
+  text-transform: uppercase;
+}
+
+.left-side {
+  left: 0;
+}
+
+.right-side {
+  right: 0;
+}
+
 .game-plate {
   display: grid;
+  gap: 16px;
   grid-template-columns: repeat(3, 100px);
-  gap: 8px;
+  margin: 0 auto 8px;
   width: fit-content;
-  margin: 32px auto;
 }
 
-.roll-button {
-  padding: 16px;
-  border: 10px outset red;
-  border-radius: 50%;
-  width: 100px;
+.play-button {
+  align-items: center;
+  border: none;
+  display: flex;
   height: 100px;
+  justify-content: center;
   margin: 0 auto;
   outline: none;
+  padding: 8px;
+  width: 100px;
+  border: 5px solid #ff9800;
+  border-radius: 50%;
+  background-color: #ffffff;
 }
 
-.roll-button:hover {
-  opacity: 0.6;
+.play-button:hover {
+  opacity: 0.8;
 }
 
-.game-plate > .roll-button {
+.play-button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.game-plate > .play-button {
   grid-column:  1 / span 3;
 }
 
@@ -35,31 +66,31 @@
 }
 
 .game-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(150px, 1fr));
-  gap: 32px 64px;
-  width: fit-content;
-  margin: 0 auto;
-  border: 1px solid red;
-  padding: 32px 64px;
   border-radius: 8px;
+  display: grid;
+  gap: 32px 64px;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  margin: 0 auto;
+  padding: 32px 64px;
+  width: fit-content;
 }
 
 .game-item {
-  position: relative;
   padding-top: 100%;
+  position: relative;
 }
 
 .content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding: 8px 16px;
-  border: 1px solid red;
-  border-radius: 8px;
-  display: flex;
   align-items: center;
+  border-radius: 8px;
+  border: 5px solid #ff9800;
+  bottom: 0;
+  display: flex;
   justify-content: center;
+  left: 0;
+  padding: 8px 16px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #ffffff;
 }
