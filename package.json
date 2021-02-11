@@ -83,6 +83,7 @@
       "!**/coverage/**",
       "!**/cypress/**",
       "!src/index.tsx",
+      "!src/utils.ts",
       "!src/constants/**",
       "!src/routes/index.ts",
       "!src/types",
