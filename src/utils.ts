@@ -27,6 +27,7 @@ const getRandomNames = () => {
 export const useRollDices = () => {
   const [names, setNames] = useState<ImageName[]>(getRandomNames);
   const [rolling, setRolling] = useState(false);
+  const [needToShowResult, setNeedToShowResult] = useState(false);
   const [intervalId, setIntervalId] = useState<number>();
   const [timeoutId, setTimeoutId] = useState<number>();
 
@@ -34,6 +35,7 @@ export const useRollDices = () => {
     (id?: number) => () => {
       window.clearInterval(id);
       setRolling(false);
+      setNeedToShowResult(true);
     },
     [],
   );
@@ -45,6 +47,7 @@ export const useRollDices = () => {
         setNames(getRandomNames());
       }, 100);
       setRolling(true);
+      setNeedToShowResult(false);
       setIntervalId(id);
       setTimeoutId(window.setTimeout(makeCleanInterval(id), 3000));
     },
@@ -64,6 +67,7 @@ export const useRollDices = () => {
   return {
     names,
     rolling,
+    needToShowResult,
     handleRoll,
   };
 };

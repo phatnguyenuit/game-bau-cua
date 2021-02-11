@@ -1,8 +1,8 @@
-import { images, useRollDices } from './utils';
+import { images, useRollDices, ImageName } from './utils';
 import './App.css';
 
 function App() {
-  const { names, rolling, handleRoll } = useRollDices();
+  const { names, rolling, needToShowResult, handleRoll } = useRollDices();
 
   return (
     <div data-testid="App" className="App">
@@ -38,7 +38,13 @@ function App() {
       <div className="game-grid">
         {Object.entries(images).map(([name, src]) => (
           <div key={name} className={'game-item'}>
-            <div className="content">
+            <div
+              className={`content ${
+                needToShowResult && names.includes(name as ImageName)
+                  ? 'matched'
+                  : ''
+              }`}
+            >
               <img width={108} height="auto" src={src} alt={name} />
             </div>
           </div>
