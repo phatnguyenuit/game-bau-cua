@@ -1,54 +1,35 @@
-import { images, useRollDices, ImageName } from './utils';
+import NewGameButton from './components/new-game-button';
+import DicePlate from './components/dice-plate';
+import useDiceGame from './hooks/useDiceGame';
+import { diceImages, DiceName } from './constants';
+import { formatThousand } from './utils';
+
 import './App.css';
 
 function App() {
   const {
-    names,
-    rolling,
-    needToShowResult,
-    betState,
     amount,
-    handleRoll,
+    betState,
+    names,
+    needToShowResult,
+    rolling,
     handleBet,
     handleResetBet,
-  } = useRollDices();
+    handleRoll,
+    startNewSession,
+  } = useDiceGame();
 
   return (
     <div data-testid="App" className="App">
       <div className="side-section left-side">Happy new year 2021</div>
       <div className="side-section right-side">Happy new year 2021</div>
-      <div className="amount">
-        <span>${amount}</span>
+      <div className="amount-section">
+        <span>${formatThousand(amount)}</span>
+        <NewGameButton onClick={startNewSession} />
       </div>
-      <div className="game-plate">
-        {names.map((name, index) => (
-          <div key={`${name}-${index}`} className="plate-item">
-            <div className="content">
-              <img
-                width={64}
-                height="auto"
-                src={images[name]}
-                alt={`rolled-${name}`}
-              />
-            </div>
-          </div>
-        ))}
-        <button
-          type="button"
-          className={`play-button`}
-          disabled={rolling}
-          onClick={handleRoll}
-        >
-          <img
-            width={64}
-            height="auto"
-            src="/images/dice.svg"
-            alt="play-icon"
-          />
-        </button>
-      </div>
+      <DicePlate disabled={rolling} items={names} onStart={handleRoll} />
       <div className="game-grid">
-        {(Object.entries(images) as Array<[ImageName, string]>).map(
+        {(Object.entries(diceImages) as Array<[DiceName, string]>).map(
           ([name, src]) => {
             const betted = betState[name] > 0;
             return (
