@@ -26,13 +26,9 @@ export const DiceGameComponent: React.FC = () => {
       <div
         className={classnames(classes['side-section'], classes['left-side'])}
       >
-        Happy new year 2021
+        <span>Happy new year 2021</span>
       </div>
-      <div
-        className={classnames(classes['side-section'], classes['right-side'])}
-      >
-        Happy new year 2021
-      </div>
+
       <div className={classes['amount-section']}>
         <span>${formatThousand(amount)}</span>
         <NewGameButton onClick={startNewSession} />
@@ -45,6 +41,11 @@ export const DiceGameComponent: React.FC = () => {
         onBet={handleBet}
         onResetBet={handleResetBet}
       />
+      <div
+        className={classnames(classes['side-section'], classes['right-side'])}
+      >
+        <span>Happy new year 2021</span>
+      </div>
     </div>
   );
 };
