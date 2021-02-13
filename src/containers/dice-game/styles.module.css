@@ -22,10 +22,34 @@
   align-items: center;
   color: #ff9800;
   display: flex;
-  font-size: 200%;
+  font-size: 300%;
   font-weight: bold;
   gap: 16px;
   position: absolute;
   right: 10%;
   top: 0;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .side-section {
+    position: relative;
+    writing-mode: initial;
+    margin: 0 auto;
+  }
+
+  .amount-section {
+    position: relative;
+    top: unset;
+    right: unset;
+    float: right;
+    margin-top: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+  }
+
+  .amount-section:after {
+    content: "";
+    clear: both;
+  }
 }

@@ -6,7 +6,7 @@ export const NewGameButtonComponent: React.FC<NewGameButtonProps> = ({
   onClick,
 }) => (
   <button title="New game" className={classes.root} onClick={onClick}>
-    <img width={24} height="auto" src="/images/sync.svg" alt="new-game-icon" />
+    <img width={32} height="auto" src="/images/sync.svg" alt="new-game-icon" />
   </button>
 );
 

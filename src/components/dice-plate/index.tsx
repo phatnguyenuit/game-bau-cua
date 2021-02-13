@@ -22,6 +22,7 @@ export const DicePlateComponent: React.FC<DicePlateProps> = ({
     ))}
     <button
       type="button"
+      title="Play"
       className={classes['play-button']}
       disabled={disabled}
       onClick={onStart}
