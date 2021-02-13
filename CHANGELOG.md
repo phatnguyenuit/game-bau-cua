@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/phatnguyenuit/game-bau-cua/compare/1.5.0...1.5.1) (2021-02-13)
+
+
+### Bug Fixes
+
+* fix responsive for mobile and landscape ([8dcf045](https://github.com/phatnguyenuit/game-bau-cua/commit/8dcf0454be8d5132905f193fa8dc96e756bf7e81))
+
 # [1.5.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.4.0...1.5.0) (2021-02-13)
 
 
