@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.3.5...1.4.0) (2021-02-13)
+
+
+### Features
+
+* add page responsive ([3ed3169](https://github.com/phatnguyenuit/game-bau-cua/commit/3ed316973cbb4bccf5c78dfcb1b8eca91f709793))
+
 ## [1.3.5](https://github.com/phatnguyenuit/game-bau-cua/compare/1.3.4...1.3.5) (2021-02-13)
 
 ## [1.3.4](https://github.com/phatnguyenuit/game-bau-cua/compare/1.3.3...1.3.4) (2021-02-12)
