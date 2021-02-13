@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.4.0...1.5.0) (2021-02-13)
+
+
+### Features
+
+* add i18n translation ([7286b91](https://github.com/phatnguyenuit/game-bau-cua/commit/7286b917471d9718d21598ed10ce2b505e20150f))
+
 # [1.4.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.3.5...1.4.0) (2021-02-13)
 
 
