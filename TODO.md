@@ -2,4 +2,4 @@
 
 - [x] Responsive
 - [ ] Unit test
-- [ ] i18n
+- [x] i18n
