@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { randomIntegerInRange } from 'utils';
 import { DiceName, diceNames } from '../../constants';
 
@@ -26,6 +27,7 @@ export const useDiceGame = () => {
   const [intervalId, setIntervalId] = useState<number>();
   const [timeoutId, setTimeoutId] = useState<number>();
   const [amount, setAmount] = useState(initiateAmount);
+  const { t } = useTranslation();
 
   const handleBet = useCallback(
     (name: DiceName) => () => {
@@ -46,14 +48,20 @@ export const useDiceGame = () => {
             setNeedToShowResult(false);
             setBetState((prev) => ({ ...prev, [name]: prev[name] + 1 }));
           } else {
-            alert('You can bet up to 3 items!');
+            alert(
+              t('max-bet-msg', { defaultValue: 'You can bet up to 3 items!' }),
+            );
           }
         } else {
-          alert('Please adjust your betted amount!');
+          alert(
+            t('exceed-bet-amount-msg', {
+              defaultValue: 'Please adjust your betted amount!',
+            }),
+          );
         }
       }
     },
-    [amount, betState, needToShowResult, rolling],
+    [amount, betState, needToShowResult, rolling, t],
   );
 
   const handleResetBet = useCallback(
@@ -94,13 +102,19 @@ export const useDiceGame = () => {
           setIntervalId(id);
           setTimeoutId(window.setTimeout(makeCleanInterval(id), 3000));
         } else {
-          alert('Please adjust your betted amount!');
+          alert(
+            t('exceed-bet-amount-msg', {
+              defaultValue: 'Please adjust your betted amount!',
+            }),
+          );
         }
       } else {
-        alert('Please bet at least one item!');
+        alert(
+          t('no-bet-msg', { defaultValue: 'Please bet at least one item!' }),
+        );
       }
     },
-    [amount, betState, makeCleanInterval],
+    [amount, betState, t, makeCleanInterval],
   );
 
   const startNewSession = useCallback(() => {

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import DiceGrid from 'components/dice-grid';
 import DicePlate from 'components/dice-plate';
@@ -10,6 +11,7 @@ import { useDiceGame } from './utils';
 import classes from './styles.module.css';
 
 export const DiceGameComponent: React.FC = () => {
+  const { t } = useTranslation();
   const {
     amount,
     betState,
@@ -26,7 +28,9 @@ export const DiceGameComponent: React.FC = () => {
       <div
         className={classnames(classes['side-section'], classes['left-side'])}
       >
-        <span>Happy new year 2021</span>
+        <span>
+          {t('happy-banner', { defaultValue: 'Happy new year 2021' })}
+        </span>
       </div>
 
       <div className={classes['amount-section']}>
@@ -44,7 +48,9 @@ export const DiceGameComponent: React.FC = () => {
       <div
         className={classnames(classes['side-section'], classes['right-side'])}
       >
-        <span>Happy new year 2021</span>
+        <span>
+          {t('happy-banner', { defaultValue: 'Happy new year 2021' })}
+        </span>
       </div>
     </div>
   );
