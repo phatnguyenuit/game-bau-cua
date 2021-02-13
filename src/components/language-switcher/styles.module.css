@@ -2,8 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
-  padding: 8px 16px;
+  padding: 16px;
   z-index: 4;
   position: relative;
+}
+
+.root > a{
+  margin-right: 8px;
 }

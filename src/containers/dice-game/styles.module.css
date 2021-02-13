@@ -53,3 +53,25 @@
     clear: both;
   }
 }
+
+@media only screen and (max-width: 736px) and (orientation: landscape) {
+  .side-section {
+    position: relative;
+    writing-mode: initial;
+    margin: 0 auto;
+    margin-bottom: 16px;
+  }
+
+  .amount-section {
+    position: relative;
+    top: unset;
+    right: unset;
+    float: right;
+    margin-top: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    float: inherit;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
