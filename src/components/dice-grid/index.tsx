@@ -7,8 +7,8 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
   betValues,
   rolledDices,
   needToShowResult,
-  handleBet,
-  handleResetBet,
+  onBet,
+  onResetBet,
 }) => {
   const isBetted = useCallback(
     (diceName: DiceName) => {
@@ -26,7 +26,7 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
             <div
               key={diceName}
               className={classes.item}
-              onClick={handleBet(diceName)}
+              onClick={onBet(diceName)}
             >
               <div
                 className={classnames(classes.content, {
@@ -42,7 +42,7 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
                       <div className={classes['corner-section']}>
                         <span
                           className={classes.reset}
-                          onClick={handleResetBet(diceName)}
+                          onClick={onResetBet(diceName)}
                         >
                           &#x2715;
                         </span>
@@ -71,6 +71,6 @@ export interface DiceGridProps {
   betValues: Record<DiceName, number>;
   needToShowResult: boolean;
   rolledDices: DiceName[];
-  handleBet: (name: DiceName) => React.MouseEventHandler<any>;
-  handleResetBet: (name: DiceName) => React.MouseEventHandler<any>;
+  onBet: (name: DiceName) => React.MouseEventHandler<any>;
+  onResetBet: (name: DiceName) => React.MouseEventHandler<any>;
 }
