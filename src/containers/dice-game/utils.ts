@@ -1,23 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { randomIntegerInRange } from 'utils';
+import { getRandomNames, initiateBetState, initiateAmount } from 'utils';
 import { DiceName, DICE_NAMES } from '../../constants';
-
-const getRandomNames = () => {
-  const getRandomIndex = () => randomIntegerInRange(0, DICE_NAMES.length);
-  return new Array(3)
-    .fill(undefined)
-    .map(getRandomIndex)
-    .map((index) => DICE_NAMES[index]);
-};
-
-const initiateBetState = () =>
-  DICE_NAMES.reduce((prev, name) => ({ ...prev, [name]: 0 }), {}) as Record<
-    DiceName,
-    number
-  >;
-
-const initiateAmount = () => randomIntegerInRange(20, 100);
 
 export const useDiceGame = () => {
   const [names, setNames] = useState<DiceName[]>(getRandomNames);
