@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getRandomNames, initiateBetState, initiateAmount } from 'utils';
+import { getRandomDices, initiateBetState, initiateAmount } from 'utils';
 import { DiceName, DICE_NAMES } from '../../constants';
 
 export const useDiceGame = () => {
-  const [names, setNames] = useState<DiceName[]>(getRandomNames);
+  const [names, setNames] = useState<DiceName[]>(getRandomDices);
   const [betState, setBetState] = useState(initiateBetState);
   const [rolling, setRolling] = useState(false);
   const [needToShowResult, setNeedToShowResult] = useState(false);
@@ -79,7 +79,7 @@ export const useDiceGame = () => {
       if (bettedItems.length) {
         if (bettedAmount <= amount) {
           const id = window.setInterval(() => {
-            setNames(getRandomNames);
+            setNames(getRandomDices);
           }, 100);
           setNeedToShowResult(false);
           setRolling(true);

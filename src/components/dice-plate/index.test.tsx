@@ -1,9 +1,9 @@
 import { screen, render, fireEvent } from '@testing-library/react';
 
-import { getRandomNames } from 'utils';
+import { getRandomDices } from 'utils';
 import DicePlate, { DicePlateProps } from './index';
 
-const rolledDices = getRandomNames();
+const rolledDices = getRandomDices();
 const disabled = false;
 const onStart = jest.fn();
 

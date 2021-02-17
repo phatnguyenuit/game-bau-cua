@@ -30,7 +30,8 @@ export const getStaticPath = (path: string, base: string) => {
   let formattedPath = path.replace(/^\//, '').replace(/\/$/, '');
   return `${base}/${formattedPath}`;
 };
-export const getRandomNames = () => {
+
+export const getRandomDices = () => {
   const getRandomIndex = () => randomIntegerInRange(0, DICE_NAMES.length);
   return new Array(3)
     .fill(undefined)

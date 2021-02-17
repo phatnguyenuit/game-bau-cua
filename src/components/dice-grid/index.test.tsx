@@ -1,6 +1,6 @@
 import { screen, render, fireEvent } from '@testing-library/react';
 
-import { initiateBetState, getRandomNames } from 'utils';
+import { initiateBetState, getRandomDices } from 'utils';
 import { DiceName } from '../../constants/index';
 import DiceGrid, { DiceGridProps } from './index';
 
@@ -18,7 +18,7 @@ const DICE_NAME: DiceName = 'calabash';
 
 function setupTest(setupProps?: Partial<DiceGridProps>) {
   const betState = initiateBetState();
-  const rolledDices = getRandomNames();
+  const rolledDices = getRandomDices();
   const result = render(
     <DiceGrid
       betValues={betState}
