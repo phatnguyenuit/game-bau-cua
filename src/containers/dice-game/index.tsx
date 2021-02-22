@@ -15,7 +15,7 @@ export const DiceGameComponent: React.FC = () => {
   const {
     amount,
     betState,
-    names,
+    rolledDices,
     needToShowResult,
     rolling,
     handleBet,
@@ -24,7 +24,7 @@ export const DiceGameComponent: React.FC = () => {
     startNewSession,
   } = useDiceGame();
   return (
-    <div>
+    <div data-testid="dice-game">
       <div
         className={classnames(classes['side-section'], classes['left-side'])}
       >
@@ -37,10 +37,10 @@ export const DiceGameComponent: React.FC = () => {
         <span>${formatThousand(amount)}</span>
         <NewGameButton onClick={startNewSession} />
       </div>
-      <DicePlate disabled={rolling} items={names} onStart={handleRoll} />
+      <DicePlate disabled={rolling} items={rolledDices} onStart={handleRoll} />
       <DiceGrid
         betValues={betState}
-        rolledDices={names}
+        rolledDices={rolledDices}
         needToShowResult={needToShowResult}
         onBet={handleBet}
         onResetBet={handleResetBet}

@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getRandomDices, initiateBetState, initiateAmount } from 'utils';
-import { DiceName, DICE_NAMES } from '../../constants';
+import { DiceName, DICE_NAMES, ROLLING_INTERVAL_MS } from '../../constants';
 
 export const useDiceGame = () => {
-  const [names, setNames] = useState<DiceName[]>(getRandomDices);
+  const [rolledDices, setRolledDices] = useState<DiceName[]>(getRandomDices);
   const [betState, setBetState] = useState(initiateBetState);
   const [rolling, setRolling] = useState(false);
   const [needToShowResult, setNeedToShowResult] = useState(false);
@@ -52,7 +52,7 @@ export const useDiceGame = () => {
     (name: DiceName) => (e: React.MouseEvent) => {
       e.stopPropagation();
       if (!rolling) {
-        setBetState((prev) => ({ ...prev, [name]: 0 }));
+        setBetState(initiateBetState);
       }
     },
     [rolling],
@@ -67,6 +67,10 @@ export const useDiceGame = () => {
     [],
   );
 
+  const handleRollingInterval = useCallback(() => {
+    setRolledDices(getRandomDices);
+  }, []);
+
   const handleRoll = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
@@ -78,13 +82,16 @@ export const useDiceGame = () => {
       // Can start only having betted and valid betted amount
       if (bettedItems.length) {
         if (bettedAmount <= amount) {
-          const id = window.setInterval(() => {
-            setNames(getRandomDices);
-          }, 100);
+          const id = window.setInterval(
+            handleRollingInterval,
+            ROLLING_INTERVAL_MS,
+          );
           setNeedToShowResult(false);
           setRolling(true);
           setIntervalId(id);
-          setTimeoutId(window.setTimeout(makeCleanInterval(id), 3000));
+          setTimeoutId(
+            window.setTimeout(makeCleanInterval(id), ROLLING_INTERVAL_MS),
+          );
         } else {
           alert(
             t('exceed-bet-amount-msg', {
@@ -98,7 +105,7 @@ export const useDiceGame = () => {
         );
       }
     },
-    [amount, betState, t, makeCleanInterval],
+    [betState, amount, handleRollingInterval, makeCleanInterval, t],
   );
 
   const startNewSession = useCallback(() => {
@@ -122,8 +129,8 @@ export const useDiceGame = () => {
     if (!rolling && needToShowResult) {
       const bettedItems = DICE_NAMES.filter((n) => betState[n] > 0);
       const gainedAmount = bettedItems.reduce((total, item) => {
-        if (names.includes(item)) {
-          const factor = names.filter((i) => i === item).length;
+        if (rolledDices.includes(item)) {
+          const factor = rolledDices.filter((i) => i === item).length;
           return total + factor * betState[item];
         }
 
@@ -131,17 +138,25 @@ export const useDiceGame = () => {
       }, 0);
       setAmount((prev) => prev + gainedAmount);
     }
-  }, [rolling, betState, names, needToShowResult]);
+  }, [rolling, betState, rolledDices, needToShowResult]);
 
   return {
-    names,
+    rolledDices,
     rolling,
     needToShowResult,
     betState,
     amount,
+    intervalId,
+    timeoutId,
     handleRoll,
     handleBet,
     handleResetBet,
     startNewSession,
+    setRolling,
+    setBetState,
+    setNeedToShowResult,
+    makeCleanInterval,
+    setRolledDices,
+    handleRollingInterval,
   };
 };

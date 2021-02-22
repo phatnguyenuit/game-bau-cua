@@ -1,4 +1,4 @@
-import { DiceName, DICE_NAMES } from '../constants';
+import { DiceName, DICE_NAMES, MAX_AMOUNT, MIN_AMOUNT } from '../constants';
 
 export const randomInRange = (start: number, end: number) =>
   Math.random() * (end - start) + start;
@@ -45,4 +45,5 @@ export const initiateBetState = () =>
     number
   >;
 
-export const initiateAmount = () => randomIntegerInRange(20, 100);
+export const initiateAmount = () =>
+  randomIntegerInRange(MIN_AMOUNT, MAX_AMOUNT);
