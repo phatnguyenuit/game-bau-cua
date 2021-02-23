@@ -1,17 +1,18 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { getRandomDices, initiateBetState } from 'utils';
+import { initiateBetState } from 'utils';
+import * as globalUtils from 'utils';
 import {
   DiceName,
   MAX_AMOUNT,
   MIN_AMOUNT,
   ROLLING_INTERVAL_MS,
 } from '../../../constants';
-import * as utils from '../utils';
+import { useDiceGame } from '../utils';
 
 describe('utils', () => {
   describe('useDiceGame', () => {
     function setupTest() {
-      const result = renderHook(() => utils.useDiceGame());
+      const result = renderHook(() => useDiceGame());
       return result;
     }
 
@@ -19,6 +20,7 @@ describe('utils', () => {
     const alertMock = jest.spyOn(window, 'alert');
     const setIntervalMock = jest.spyOn(window, 'setInterval');
     const clearIntervalMock = jest.spyOn(window, 'clearInterval');
+    const clearTimeoutMock = jest.spyOn(window, 'clearTimeout');
 
     beforeEach(() => {
       hookResult = setupTest();
@@ -256,15 +258,16 @@ describe('utils', () => {
     });
 
     describe('handleRollingInterval', () => {
-      test('should work', () => {
-        const initialRolledDices = hookResult.result.current.rolledDices;
+      const getRandomDicesMock = jest
+        .spyOn(globalUtils, 'getRandomDices')
+        .mockReturnValue(['calabash', 'crab', 'fish']);
+      test('should call `getRandomDices`', () => {
+        const initialCalls = getRandomDicesMock.mock.calls.length;
         act(() => {
           hookResult.result.current.handleRollingInterval();
         });
 
-        expect(hookResult.result.current.rolledDices).not.toStrictEqual(
-          initialRolledDices,
-        );
+        expect(getRandomDicesMock).toHaveBeenCalledTimes(initialCalls + 1);
       });
     });
 
@@ -339,10 +342,45 @@ describe('utils', () => {
     });
 
     describe('startNewSession', () => {
-      test('should work', () => {
+      test('should start new game session', () => {
+        act(() => {
+          hookResult.result.current.setNeedToShowResult(true);
+        });
+
         act(() => {
           hookResult.result.current.startNewSession();
         });
+
+        expect(hookResult.result.current.needToShowResult).toBe(false);
+        expect(hookResult.result.current.betState).toStrictEqual(
+          initiateBetState(),
+        );
+      });
+    });
+
+    describe('clean up effect', () => {
+      test('should clear interval and timeout', () => {
+        // Prepare
+        const actualIntervalId = 1;
+        const actualTimeoutId = 2;
+        act(() => {
+          hookResult.result.current.setRolling(true);
+          hookResult.result.current.setIntervalId(actualIntervalId);
+          hookResult.result.current.setTimeoutId(actualTimeoutId);
+        });
+
+        act(() => {
+          hookResult.unmount();
+        });
+
+        // expect(hookResult.result.current.rolling).toBe(false);
+        // expect(hookResult.result.current.needToShowResult).toBe(true);
+
+        expect(clearIntervalMock).toHaveBeenCalled();
+        expect(clearIntervalMock).toHaveBeenCalledWith(actualIntervalId);
+
+        expect(clearTimeoutMock).toHaveBeenCalled();
+        expect(clearTimeoutMock).toHaveBeenCalledWith(actualTimeoutId);
       });
     });
   });

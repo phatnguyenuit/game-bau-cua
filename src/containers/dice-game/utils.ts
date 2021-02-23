@@ -114,22 +114,22 @@ export const useDiceGame = () => {
     setBetState(initiateBetState);
   }, []);
 
+  // clean up effect
   useEffect(() => {
     return () => {
       if (intervalId && timeoutId && rolling) {
-        const cleanInterval = makeCleanInterval(intervalId);
-        cleanInterval();
+        makeCleanInterval(intervalId)();
         window.clearTimeout(timeoutId);
       }
     };
   }, [makeCleanInterval, intervalId, timeoutId, rolling]);
 
-  // update amount
+  // update amount effect
   useEffect(() => {
     if (!rolling && needToShowResult) {
       const bettedItems = DICE_NAMES.filter((n) => betState[n] > 0);
       const gainedAmount = bettedItems.reduce((total, item) => {
-        if (rolledDices.includes(item)) {
+        if (rolledDices && rolledDices.includes(item)) {
           const factor = rolledDices.filter((i) => i === item).length;
           return total + factor * betState[item];
         }
@@ -148,15 +148,17 @@ export const useDiceGame = () => {
     amount,
     intervalId,
     timeoutId,
-    handleRoll,
     handleBet,
     handleResetBet,
+    handleRoll,
+    handleRollingInterval,
+    makeCleanInterval,
     startNewSession,
+    setRolledDices,
     setRolling,
+    setIntervalId,
+    setTimeoutId,
     setBetState,
     setNeedToShowResult,
-    makeCleanInterval,
-    setRolledDices,
-    handleRollingInterval,
   };
 };
