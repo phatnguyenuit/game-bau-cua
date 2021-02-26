@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/phatnguyenuit/game-bau-cua/compare/1.5.1...1.5.2) (2021-02-26)
+
+
+### Bug Fixes
+
+* fix static path for images ([1b34efb](https://github.com/phatnguyenuit/game-bau-cua/commit/1b34efb103e4ec349b223cd6be70b9eda678acb1))
+
 ## [1.5.1](https://github.com/phatnguyenuit/game-bau-cua/compare/1.5.0...1.5.1) (2021-02-13)
 
 
