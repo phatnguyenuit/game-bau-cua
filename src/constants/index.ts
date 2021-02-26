@@ -1,7 +1,8 @@
 export const CRYPTO_KEY = process.env.REACT_APP_CRYPTO_KEY;
 export const CRYPTO_SECRET = process.env.REACT_APP_CRYPTO_SECRET;
+export const PUBLIC_URL = process.env.PUBLIC_URL;
 
-export const diceNames = [
+export const DICE_NAMES = [
   'deer',
   'calabash',
   'rooster',
@@ -10,9 +11,9 @@ export const diceNames = [
   'shrimp',
 ] as const;
 
-export type DiceName = typeof diceNames[number];
+export type DiceName = typeof DICE_NAMES[number];
 
-export const diceImages = diceNames.reduce(
-  (prev, name) => ({ ...prev, [name]: `/images/${name}.svg` }),
+export const diceImages = DICE_NAMES.reduce(
+  (prev, name) => ({ ...prev, [name]: `${PUBLIC_URL}/images/${name}.svg` }),
   {},
 ) as Record<DiceName, string>;

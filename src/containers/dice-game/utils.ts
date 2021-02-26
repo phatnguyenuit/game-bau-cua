@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { randomIntegerInRange } from 'utils';
-import { DiceName, diceNames } from '../../constants';
+import { DiceName, DICE_NAMES } from '../../constants';
 
 const getRandomNames = () => {
-  const getRandomIndex = () => randomIntegerInRange(0, diceNames.length);
+  const getRandomIndex = () => randomIntegerInRange(0, DICE_NAMES.length);
   return new Array(3)
     .fill(undefined)
     .map(getRandomIndex)
-    .map((index) => diceNames[index]);
+    .map((index) => DICE_NAMES[index]);
 };
 
 const initiateBetState = () =>
-  diceNames.reduce((prev, name) => ({ ...prev, [name]: 0 }), {}) as Record<
+  DICE_NAMES.reduce((prev, name) => ({ ...prev, [name]: 0 }), {}) as Record<
     DiceName,
     number
   >;
@@ -32,7 +32,7 @@ export const useDiceGame = () => {
   const handleBet = useCallback(
     (name: DiceName) => () => {
       if (!rolling) {
-        const bettedItems = diceNames.filter((n) => betState[n] > 0);
+        const bettedItems = DICE_NAMES.filter((n) => betState[n] > 0);
         const bettedAmount = bettedItems.reduce(
           (total, item) => total + betState[item],
           0,
@@ -86,7 +86,7 @@ export const useDiceGame = () => {
   const handleRoll = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      const bettedItems = diceNames.filter((n) => betState[n] > 0);
+      const bettedItems = DICE_NAMES.filter((n) => betState[n] > 0);
       const bettedAmount = bettedItems.reduce(
         (totalAmount, item) => totalAmount + betState[item],
         0,
@@ -136,7 +136,7 @@ export const useDiceGame = () => {
   // update amount
   useEffect(() => {
     if (!rolling && needToShowResult) {
-      const bettedItems = diceNames.filter((n) => betState[n] > 0);
+      const bettedItems = DICE_NAMES.filter((n) => betState[n] > 0);
       const gainedAmount = bettedItems.reduce((total, item) => {
         if (names.includes(item)) {
           const factor = names.filter((i) => i === item).length;
