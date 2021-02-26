@@ -1,5 +1,6 @@
 import { memo } from 'react';
-import { diceImages, DiceName } from '../../constants';
+import { getStaticPath } from '../../utils';
+import { DICE_IMAGES, DiceName, PUBLIC_URL } from '../../constants';
 import classes from './styles.module.css';
 
 export const DicePlateComponent: React.FC<DicePlateProps> = ({
@@ -14,7 +15,7 @@ export const DicePlateComponent: React.FC<DicePlateProps> = ({
           <img
             width={64}
             height="auto"
-            src={diceImages[item]}
+            src={DICE_IMAGES[item]}
             alt={`rolled-${item}`}
           />
         </div>
@@ -27,7 +28,12 @@ export const DicePlateComponent: React.FC<DicePlateProps> = ({
       disabled={disabled}
       onClick={onStart}
     >
-      <img width={64} height="auto" src="/images/dice.svg" alt="play-icon" />
+      <img
+        width={64}
+        height="auto"
+        src={getStaticPath('/images/dice.svg', PUBLIC_URL)}
+        alt="play-icon"
+      />
     </button>
   </div>
 );

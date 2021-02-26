@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Gourd-crab-shrimp-fish game
 
 ![CI/CD](https://github.com/phatnguyenuit/game-bau-cua/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/phatnguyenuit/game-bau-cua/branch/master/graph/badge.svg?token=SaPyRflGij)](https://codecov.io/gh/phatnguyenuit/game-bau-cua)
@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Features
 
+- Bet-able game
+- Store the last game amount
+- Supports english and vietnamese languages
 - Inherit from package [`cra-template-typescript`](https://www.npmjs.com/package/cra-template-typescript)
 - Configure `eslint` with `prettier`
 - Configure [`husky`](https://typicode.github.io/husky/#/)
@@ -15,17 +18,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Configure [`prettier`](https://prettier.io/)
 - Configure [`commitlint`](https://commitlint.js.org/)
 - Configure [`release-it`](https://github.com/release-it/release-it)
-- Add default `jest` test coverage options
-- Configure sample GitHub actions including test, release and deploy
-- Provide sample vscode snippets
-
-## Configure
-
-- Update [`README`](./README.md)
-  - Replace `:user` and `:repository` by your own.
-  - Navigate to [Codecov](https://codecov.io) login and get `Repository Upload Token` for your repository.
-  - Replace `:TOKEN` with your markdown Codecov badge.
-- Add repository secrets `DEPLOY_ACCESS_TOKEN` generated from `https://github.com/settings/tokens/new` with the first four checked options of `repo`.
 
 ## Available Scripts
 

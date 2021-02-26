@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { classnames } from '../../utils';
-import { diceImages, DiceName } from '../../constants';
+import { DICE_IMAGES, DiceName } from '../../constants';
 import classes from './styles.module.css';
 
 export const DiceGridComponent: React.FC<DiceGridProps> = ({
@@ -19,7 +19,7 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
 
   return (
     <div className={classes.root}>
-      {(Object.entries(diceImages) as Array<[DiceName, string]>).map(
+      {(Object.entries(DICE_IMAGES) as Array<[DiceName, string]>).map(
         ([diceName, imageSrc]) => {
           const betted = isBetted(diceName);
           return (
