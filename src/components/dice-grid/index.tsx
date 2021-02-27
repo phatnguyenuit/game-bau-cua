@@ -18,17 +18,19 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
   );
 
   return (
-    <div className={classes.root}>
+    <div data-testid="dice-grid" className={classes.root}>
       {(Object.entries(DICE_IMAGES) as Array<[DiceName, string]>).map(
         ([diceName, imageSrc]) => {
           const betted = isBetted(diceName);
           return (
             <div
               key={diceName}
+              data-testid={diceName}
               className={classes.item}
               onClick={onBet(diceName)}
             >
               <div
+                data-testid={`${diceName}-content`}
                 className={classnames(classes.content, {
                   [classes.matched]:
                     needToShowResult && rolledDices.includes(diceName),
@@ -41,6 +43,7 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
                     {!needToShowResult && (
                       <div className={classes['corner-section']}>
                         <span
+                          data-testid={`${diceName}-reset`}
                           className={classes.reset}
                           onClick={onResetBet(diceName)}
                         >
@@ -48,7 +51,10 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
                         </span>
                       </div>
                     )}
-                    <div className={classes['bet-value']}>
+                    <div
+                      data-testid={`${diceName}-bet-value`}
+                      className={classes['bet-value']}
+                    >
                       <span>{betValues[diceName]}</span>
                     </div>
                   </>

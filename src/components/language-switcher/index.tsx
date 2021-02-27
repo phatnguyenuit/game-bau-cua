@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import classes from './styles.module.css';
 
-const supportedLanguages = ['en', 'vi'];
+export const supportedLanguages = ['en', 'vi'];
 
 export const LanguageSwitcherComponent: React.FC = () => {
   const { i18n } = useTranslation();
@@ -15,9 +15,14 @@ export const LanguageSwitcherComponent: React.FC = () => {
     [i18n],
   );
   return (
-    <div className={classes.root}>
+    <div data-testid="language-switcher" className={classes.root}>
       {supportedLanguages.map((language) => (
-        <a key={language} href="#" onClick={changeLanguage(language)}>
+        <a
+          data-testid={`${language}-link`}
+          key={language}
+          href="#"
+          onClick={changeLanguage(language)}
+        >
           {language}
         </a>
       ))}

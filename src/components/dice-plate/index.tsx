@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { getStaticPath } from '../../utils';
+import { getStaticPath } from '../../helpers';
 import { DICE_IMAGES, DiceName, PUBLIC_URL } from '../../constants';
 import classes from './styles.module.css';
 
@@ -8,9 +8,9 @@ export const DicePlateComponent: React.FC<DicePlateProps> = ({
   disabled,
   onStart,
 }) => (
-  <div className={classes.root}>
+  <div data-testid="dice-plate" className={classes.root}>
     {items.map((item, index) => (
-      <div key={`${item}-${index}`} className={classes.item}>
+      <div data-testid="item" key={`${item}-${index}`} className={classes.item}>
         <div className={classes.content}>
           <img
             width={64}
@@ -22,8 +22,9 @@ export const DicePlateComponent: React.FC<DicePlateProps> = ({
       </div>
     ))}
     <button
-      type="button"
+      data-testid="play-button"
       title="Play"
+      type="button"
       className={classes['play-button']}
       disabled={disabled}
       onClick={onStart}

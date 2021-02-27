@@ -1,4 +1,4 @@
-import { getStaticPath } from '../utils';
+import { getStaticPath } from '../helpers';
 
 export const CRYPTO_KEY = process.env.REACT_APP_CRYPTO_KEY;
 export const CRYPTO_SECRET = process.env.REACT_APP_CRYPTO_SECRET;
@@ -22,3 +22,9 @@ export const DICE_IMAGES = DICE_NAMES.reduce(
   }),
   {},
 ) as Record<DiceName, string>;
+
+export const MIN_AMOUNT = 20;
+export const MAX_AMOUNT = 100;
+
+export const ROLLING_INTERVAL_MS = 100;
+export const ROLLING_TIMEOUT_MS = 3000;
