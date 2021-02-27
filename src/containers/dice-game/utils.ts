@@ -7,7 +7,6 @@ import storage from 'services/storage';
 
 const getLastAmount = () => {
   const lastAmount = storage.getItem('amount');
-  console.log('lastAmount', lastAmount);
   return lastAmount ? Number(lastAmount) : initiateAmount();
 };
 
