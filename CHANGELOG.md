@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.5.3...1.6.0) (2021-02-27)
+
+
+### Bug Fixes
+
+* resolve conflicts from master ([2eb86b1](https://github.com/phatnguyenuit/game-bau-cua/commit/2eb86b1bede901d0ec6839847fd4b1ff6aa947a2))
+
+
+### Features
+
+* add test for components ([be29338](https://github.com/phatnguyenuit/game-bau-cua/commit/be29338167f13b4c499946d663174094a4903ce9))
+* add test for utils ([724d048](https://github.com/phatnguyenuit/game-bau-cua/commit/724d048d624df9965b377ec559b6043756c19d6b))
+
 ## [1.5.3](https://github.com/phatnguyenuit/game-bau-cua/compare/1.5.2...1.5.3) (2021-02-26)
 
 
