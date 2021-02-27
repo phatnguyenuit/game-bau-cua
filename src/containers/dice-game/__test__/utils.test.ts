@@ -373,14 +373,32 @@ describe('utils', () => {
           hookResult.unmount();
         });
 
-        // expect(hookResult.result.current.rolling).toBe(false);
-        // expect(hookResult.result.current.needToShowResult).toBe(true);
-
         expect(clearIntervalMock).toHaveBeenCalled();
         expect(clearIntervalMock).toHaveBeenCalledWith(actualIntervalId);
 
         expect(clearTimeoutMock).toHaveBeenCalled();
         expect(clearTimeoutMock).toHaveBeenCalledWith(actualTimeoutId);
+      });
+    });
+
+    describe('update amount effect', () => {
+      test('should update amount after rolled', () => {
+        const currentAmount = hookResult.result.current.amount;
+        // Prepare
+        act(() => {
+          hookResult.result.current.setRolling(false);
+          hookResult.result.current.setNeedToShowResult(true);
+          hookResult.result.current.setBetState((prev) => ({
+            ...prev,
+            calabash: 1,
+            crab: 10,
+          }));
+          hookResult.result.current.setRolledDices(['fish', 'crab', 'crab']);
+        });
+
+        expect(hookResult.result.current.amount).toBe(
+          currentAmount + -1 + 2 * 10,
+        );
       });
     });
   });
