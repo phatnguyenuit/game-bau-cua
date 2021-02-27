@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/phatnguyenuit/game-bau-cua/compare/1.7.0...1.7.1) (2021-02-27)
+
+
+### Bug Fixes
+
+* remove console ([88c1625](https://github.com/phatnguyenuit/game-bau-cua/commit/88c1625d6351de4783205e70de4f5ddcda4f9153))
+
 # [1.7.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.6.0...1.7.0) (2021-02-27)
 
 
