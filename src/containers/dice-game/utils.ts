@@ -1,7 +1,15 @@
+import { ROLLING_TIMEOUT_MS } from './../../constants/index';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getRandomDices, initiateBetState, initiateAmount } from '../../utils';
 import { DiceName, DICE_NAMES, ROLLING_INTERVAL_MS } from '../../constants';
+import storage from 'services/storage';
+
+const getLastAmount = () => {
+  const lastAmount = storage.getItem('amount');
+  console.log('lastAmount', lastAmount);
+  return lastAmount ? Number(lastAmount) : initiateAmount();
+};
 
 export const useDiceGame = () => {
   const [rolledDices, setRolledDices] = useState<DiceName[]>(getRandomDices);
@@ -10,7 +18,7 @@ export const useDiceGame = () => {
   const [needToShowResult, setNeedToShowResult] = useState(false);
   const [intervalId, setIntervalId] = useState<number>();
   const [timeoutId, setTimeoutId] = useState<number>();
-  const [amount, setAmount] = useState(initiateAmount);
+  const [amount, setAmount] = useState(getLastAmount);
   const { t } = useTranslation();
 
   const handleBet = useCallback(
@@ -90,7 +98,7 @@ export const useDiceGame = () => {
           setRolling(true);
           setIntervalId(id);
           setTimeoutId(
-            window.setTimeout(makeCleanInterval(id), ROLLING_INTERVAL_MS),
+            window.setTimeout(makeCleanInterval(id), ROLLING_TIMEOUT_MS),
           );
         } else {
           alert(
@@ -139,6 +147,12 @@ export const useDiceGame = () => {
       setAmount((prev) => prev + gainedAmount);
     }
   }, [rolling, betState, rolledDices, needToShowResult]);
+
+  // store last amount
+  useEffect(() => {
+    // Store the last amount
+    storage.setItem('amount', String(amount));
+  }, [amount]);
 
   return {
     rolledDices,

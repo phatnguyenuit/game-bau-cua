@@ -8,7 +8,7 @@ class Crypto {
     const keySecret = `${CRYPTO_KEY}:${CRYPTO_SECRET}`;
     const cc = crypto.createDecipher(
       'aes-128-ecb',
-      new Buffer(keySecret, 'base64'),
+      Buffer.from(keySecret, 'base64'),
     );
     const decrypted = Buffer.concat([
       cc.update(text, 'base64'),
@@ -22,7 +22,7 @@ class Crypto {
     const keySecret = `${CRYPTO_KEY}:${CRYPTO_SECRET}`;
     const cc = crypto.createCipher(
       'aes-128-ecb',
-      new Buffer(keySecret, 'base64'),
+      Buffer.from(keySecret, 'base64'),
     );
     const encrypted = Buffer.concat([
       cc.update(text, 'utf8'),
