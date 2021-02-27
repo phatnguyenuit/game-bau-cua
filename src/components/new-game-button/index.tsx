@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { getStaticPath } from '../../utils';
+import { getStaticPath } from '../../helpers';
 import { PUBLIC_URL } from '../../constants';
 
 import classes from './styles.module.css';
@@ -7,7 +7,12 @@ import classes from './styles.module.css';
 export const NewGameButtonComponent: React.FC<NewGameButtonProps> = ({
   onClick,
 }) => (
-  <button title="New game" className={classes.root} onClick={onClick}>
+  <button
+    data-testid="new-game-button"
+    title="New game"
+    className={classes.root}
+    onClick={onClick}
+  >
     <img
       width={32}
       height="auto"

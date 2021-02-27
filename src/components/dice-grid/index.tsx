@@ -18,7 +18,7 @@ export const DiceGridComponent: React.FC<DiceGridProps> = ({
   );
 
   return (
-    <div className={classes.root}>
+    <div data-testid="dice-grid" className={classes.root}>
       {(Object.entries(DICE_IMAGES) as Array<[DiceName, string]>).map(
         ([diceName, imageSrc]) => {
           const betted = isBetted(diceName);

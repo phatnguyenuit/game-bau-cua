@@ -5,7 +5,7 @@ import DiceGrid from 'components/dice-grid';
 import DicePlate from 'components/dice-plate';
 import NewGameButton from 'components/new-game-button';
 
-import { formatThousand, classnames } from 'utils';
+import { formatThousand, classnames } from '../../utils';
 import { useDiceGame } from './utils';
 
 import classes from './styles.module.css';

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { getStaticPath } from '../../utils';
+import { getStaticPath } from '../../helpers';
 import { DICE_IMAGES, DiceName, PUBLIC_URL } from '../../constants';
 import classes from './styles.module.css';
 

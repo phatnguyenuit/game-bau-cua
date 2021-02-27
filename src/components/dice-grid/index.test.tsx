@@ -1,6 +1,6 @@
 import { screen, render, fireEvent } from '@testing-library/react';
 
-import { initiateBetState, getRandomDices } from 'utils';
+import { initiateBetState, getRandomDices } from '../../utils';
 import { DiceName } from '../../constants/index';
 import DiceGrid, { DiceGridProps } from './index';
 

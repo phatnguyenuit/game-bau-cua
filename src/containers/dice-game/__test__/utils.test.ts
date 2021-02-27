@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { initiateBetState } from 'utils';
-import * as globalUtils from 'utils';
+import { initiateBetState } from '../../../utils';
+import * as globalUtils from '../../../utils';
 import {
   DiceName,
   MAX_AMOUNT,

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getRandomDices, initiateBetState, initiateAmount } from 'utils';
+import { getRandomDices, initiateBetState, initiateAmount } from '../../utils';
 import { DiceName, DICE_NAMES, ROLLING_INTERVAL_MS } from '../../constants';
 
 export const useDiceGame = () => {

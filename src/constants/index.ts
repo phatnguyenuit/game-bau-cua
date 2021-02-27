@@ -1,4 +1,4 @@
-import { getStaticPath } from '../utils';
+import { getStaticPath } from '../helpers';
 
 export const CRYPTO_KEY = process.env.REACT_APP_CRYPTO_KEY;
 export const CRYPTO_SECRET = process.env.REACT_APP_CRYPTO_SECRET;
