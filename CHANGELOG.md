@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.6.0...1.7.0) (2021-02-27)
+
+
+### Features
+
+* store the last amount ([443f295](https://github.com/phatnguyenuit/game-bau-cua/commit/443f2956ec9630c1b9deb804ab26a5de3e6f6b4e))
+
 # [1.6.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.5.3...1.6.0) (2021-02-27)
 
 
