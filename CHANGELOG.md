@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.7.1...1.8.0) (2022-08-19)
+
+
+### Features
+
+* improve game behaviour ([2ecf9cd](https://github.com/phatnguyenuit/game-bau-cua/commit/2ecf9cdcc67b59087b923efa0d6ebbd52c82221f))
+
 ## [1.7.1](https://github.com/phatnguyenuit/game-bau-cua/compare/1.7.0...1.7.1) (2021-02-27)
 
 
