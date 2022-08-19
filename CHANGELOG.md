@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.8.0...1.9.0) (2022-08-19)
+
+
+### Features
+
+* add i18n for missing button ([646d3a9](https://github.com/phatnguyenuit/game-bau-cua/commit/646d3a9ebd2e8d317a5071eccba2c1eb79114cfe))
+
 # [1.8.0](https://github.com/phatnguyenuit/game-bau-cua/compare/1.7.1...1.8.0) (2022-08-19)
 
 
