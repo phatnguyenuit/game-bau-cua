@@ -58,9 +58,13 @@ export const useDiceGame = () => {
   const handleResetBet = useCallback(
     (name: DiceName) => (e: React.MouseEvent) => {
       e.stopPropagation();
-      if (!rolling) {
-        setBetState(initiateBetState);
-      }
+
+      if (rolling) return;
+
+      setBetState((prevState) => ({
+        ...prevState,
+        [name]: 0,
+      }));
     },
     [rolling],
   );
